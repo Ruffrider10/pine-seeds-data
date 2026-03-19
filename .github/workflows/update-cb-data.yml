@@ -25,5 +25,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/liquidity.csv
-          git commit -m "auto: CB data update ${DATE}" || echo "No changes"
+          git diff --staged --quiet || git commit -m "auto: CB data update ${{ github.event.client_payload.date }}"
           git push
