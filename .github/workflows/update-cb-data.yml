@@ -4,11 +4,16 @@ on:
   repository_dispatch:
     types: [cb-data-update]
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Update liquidity.csv
         env:
