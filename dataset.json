@@ -1,0 +1,8 @@
+{
+  "format": "pine_seeds_v1",
+  "fields": [
+    {"name": "GLI_Total", "title": "Global Liquidity Index Total ($T)", "type": "float"},
+    {"name": "FNL", "title": "Fed Net Liquidity ($T)", "type": "float"},
+    {"name": "CB_Total", "title": "4-CB Balance Sheet Total ($T)", "type": "float"}
+  ]
+}
