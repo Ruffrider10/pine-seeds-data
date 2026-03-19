@@ -1,0 +1,29 @@
+name: Update CB Data
+
+on:
+  repository_dispatch:
+    types: [cb-data-update]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update liquidity.csv
+        env:
+          CB_TOTAL: ${{ github.event.client_payload.cb_total }}
+          FNL: ${{ github.event.client_payload.fnl }}
+          DATE: ${{ github.event.client_payload.date }}
+        run: |
+          echo "date,GLI_Total,FNL,CB_Total" > data/liquidity.csv
+          echo "${DATE},${CB_TOTAL},${FNL},${CB_TOTAL}" >> data/liquidity.csv
+          cat data/liquidity.csv
+      
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/liquidity.csv
+          git commit -m "auto: CB data update ${DATE}" || echo "No changes"
+          git push
