@@ -1,0 +1,26 @@
+name: Update OmniVue Signal
+on:
+  repository_dispatch:
+    types: [omnivue-update]
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Write omnivue.json
+        env:
+          CONTENT: ${{ github.event.client_payload.content }}
+        run: |
+          echo "$CONTENT" > data/omnivue.json
+          cat data/omnivue.json
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/omnivue.json
+          git diff --staged --quiet || git commit -m "auto: OmniVue signal update"
+          git push
