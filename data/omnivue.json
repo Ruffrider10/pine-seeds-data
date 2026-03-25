@@ -1,1 +1,1 @@
-{"signal":"EARLY_BUY","traffic":"LIGHT_GREEN","score":1,"ts":"2026-03-25T19:20:57.645Z","price":6648.5,"components":{"vams":0,"aoa":0,"volmom":"NEUTRAL","vslrt":0,"tsi":"BULL","adx":0,"mtf":0}}
+{"signal":"EARLY_SELL","traffic":"LIGHT_RED","score":-1,"ts":"2026-03-25T19:31:54.874Z","price":6638,"components":{"vams":0,"aoa":0,"volmom":"NEUTRAL","vslrt":0,"tsi":"BULL","adx":0,"mtf":0}}
